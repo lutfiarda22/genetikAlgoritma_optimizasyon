@@ -24,12 +24,12 @@ Amaç, kısıtlar altında **maksimum performansı** veren x₁ ve x₂'yi bulma
 
 * Minimum CPU çekirdeği:
   [
-  x_1 \ge 4
+  x_1​≥4
   ]
 
 * Donanım sınırı:
   [
-  x_1 \cdot x_2 \le 512
+  x_1​⋅x_2​≤512
   ]
 
 ### **Değişken Aralıkları:**
