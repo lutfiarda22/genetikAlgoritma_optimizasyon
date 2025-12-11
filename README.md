@@ -5,7 +5,7 @@ Amaç, bir web sunucusunun performansını belirleyen iki temel parametre olan *
 
 ---
 
-## 📌 **Projenin Amacı**
+##  **Projenin Amacı**
 
 Optimizasyon yapılacak performans fonksiyonu:
 
@@ -41,7 +41,7 @@ Kısıt ihlali yapan bireylere **500 puan ceza** uygulanmaktadır.
 
 ---
 
-## ⚙️ **Kullanılan Yöntem: Genetik Algoritma (GA)**
+## **Kullanılan Yöntem: Genetik Algoritma (GA)**
 
 Projede kullanılan GA bileşenleri:
 
@@ -71,7 +71,7 @@ Projede kullanılan GA bileşenleri:
 
 ---
 
-## ▶️ **Çalıştırma Adımları**
+##  **Çalıştırma Adımları**
 
 Aşağıdaki adımlar Google Colab üzerinde çalıştırmak içindir.
 
@@ -104,7 +104,7 @@ Algoritma çalıştığında şu çıktılar görünür:
 
 ---
 
-## 🛠️ **Kurulum Yönergeleri**
+## **Kurulum Yönergeleri**
 
 Bu proje **Google Colab** üzerinde çalışmak üzere tasarlanmıştır ve ek kurulum gerektirmez.
 
@@ -114,15 +114,3 @@ Yerel çalıştırmak isteyenler için gerekli kütüphaneler:
 pip install numpy
 pip install matplotlib
 ```
-
----
-
-Hazır! Bundan sonra direkt olarak **README.md içine yapıştırabilirsin**.
-İstersen ek olarak:
-
-* görsel/grafik ekleme alanı
-* kod blokları
-* sonuç değerlendirmesi
-* proje sahibi bölümü
-
-de ekleyebilirim.
