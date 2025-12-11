@@ -1,121 +1,128 @@
-🖥️ Genetik Algoritma ile Web Sunucusu Ayarlarının Optimizasyonu (Senaryo 8)
+# **Genetik Algoritma ile Web Sunucusu Ayarlarının Optimizasyonu (Senaryo 8)**
 
-Bu proje, BLG307 Yapay Zeka Sistemleri dersi kapsamında verilen Senaryo 8 için geliştirilmiştir.
-Amaç, bir web sunucusunun performansını belirleyen iki temel parametre olan:
+Bu proje, **BLG307 Yapay Zeka Sistemleri** dersi kapsamında verilen Senaryo 8 için geliştirilmiştir.
+Amaç, bir web sunucusunun performansını belirleyen iki temel parametre olan **CPU çekirdek sayısı (x₁)** ve **RAM miktarı (x₂)** değerlerini **Genetik Algoritma (GA)** kullanarak optimize etmek ve maksimum performansı sağlayan sunucu ayarlarını bulmaktır.
 
-x₁ → CPU çekirdek sayısı
+---
 
-x₂ → RAM miktarı (GB)
+## 📌 **Projenin Amacı**
 
-değerlerini Genetik Algoritma (GA) kullanarak optimize etmek ve maksimum performansı veren ayar kombinasyonunu bulmaktır.
+Optimizasyon yapılacak performans fonksiyonu:
 
-🎯 Amaç Fonksiyonu
-
-Projede kullanılan performans fonksiyonu:
-
-𝑦
-=
-5
-𝑥
-1
-+
-7
-𝑥
-2
-−
-0.1
-𝑥
-1
-2
-−
-0.2
-𝑥
-2
-2
-y=5x
-1
-	​
-
-+7x
-2
-	​
-
-−0.1x
-1
-2
-	​
-
-−0.2x
-2
-2
-	​
-
+[
+y = 5x_1 + 7x_2 - 0.1x_1^2 - 0.2x_2^2
+]
 
 Bu fonksiyon:
 
-CPU ve RAM arttıkça sunucu performansını yükseltir,
+* CPU ve RAM arttıkça performansı artırır,
+* Ancak çok yüksek donanım değerlerini **maliyet** ve **verimsizlik** açısından cezalandırır.
 
-Ancak çok yüksek donanım değerlerini verimsizlik ve maliyet sebebiyle cezalandırır.
+Amaç, kısıtlar altında **maksimum performansı** veren x₁ ve x₂'yi bulmaktır.
 
-📌 Kısıtlar
+### **Kısıtlar:**
 
-Kodda kullanılan kısıt denetimleri:
+* Minimum CPU çekirdeği:
+  [
+  x_1 \ge 4
+  ]
 
-x₁ ⋅ x₂ ≤ 512
+* Donanım sınırı:
+  [
+  x_1 \cdot x_2 \le 512
+  ]
 
-x₁ ≥ 4
+### **Değişken Aralıkları:**
 
-🔢 Değişken Aralıkları
+* x₁ (CPU) ∈ [4, 12]
+* x₂ (RAM) ∈ [4, 64]
 
-CPU (x₁): [4, 12]
+Kısıt ihlali yapan bireylere **500 puan ceza** uygulanmaktadır.
 
-RAM (x₂): [4, 64]
+---
 
-Kısıt ihlali durumunda bireylere 500 puan ceza uygulanır.
+## ⚙️ **Kullanılan Yöntem: Genetik Algoritma (GA)**
 
-⚙️ Kullanılan Genetik Algoritma Bileşenleri
+Projede kullanılan GA bileşenleri:
 
-Başlangıç popülasyonu: 10 birey
+* **Popülasyon Oluşturma:**
+  10 bireyden oluşan rastgele başlangıç popülasyonu.
 
-Seçim yöntemi: Rank temelli seçim
+* **Fitness Fonksiyonu:**
+  Amaç fonksiyonu + kısıt kontrolü + ceza yöntemi.
 
-Çaprazlama: Tek noktalı çaprazlama
+* **Seçilim (Selection):**
+  **Rank temelli seçim** yöntemi kullanılır.
 
-Mutasyon: %20 ihtimal, 0.5 büyüklüğünde
+* **Çaprazlama (Crossover):**
+  Tek noktalı çaprazlama uygulanır.
 
-Elitizm: En iyi birey her nesilde korunur
+* **Mutasyon (Mutation):**
+  %20 ihtimal ile 0.5 büyüklüğünde rastgele değişim uygulanır.
 
-Nesil sayısı: Kullanıcı tarafından belirlenebilir (varsayılan 20)
+* **Elitizm:**
+  Her neslin en iyi bireyi bir sonraki nesle doğrudan aktarılır.
 
-🔄 Algoritma Akışı
+* **Jenerasyon Sayısı:**
+  Kullanıcı tarafından belirlenebilir (varsayılan 20).
 
-Her nesilde:
+* **Görselleştirme:**
+  Fitness değerinin jenerasyonlara göre değişimi grafikle gösterilir.
 
-En iyi CPU–RAM kombinasyonu görüntülenir
+---
 
-Bireylerin uygunluk skorları hesaplanır
+## ▶️ **Çalıştırma Adımları**
 
-En başarılı birey bir sonraki nesle elit birey olarak taşınır
+Aşağıdaki adımlar Google Colab üzerinde çalıştırmak içindir.
 
-Son nesilde maksimum performans yazdırılır
+### **1. Colab’de .ipynb dosyasını açın**
 
-Jenerasyonlara göre performans değişim grafiği oluşturulur
+* Dosyayı yükleyin veya GitHub üzerinden açın.
 
-📊 Çıktılar
+### **2. Tüm hücreleri sırayla çalıştırın**
 
-Algoritma çalıştırıldığında:
+Hücreler şu sırayı içerir:
 
-Önerilen optimum CPU çekirdek sayısı
+1. Projenin açıklaması ve amaç
+2. Kütüphanelerin import edilmesi
+3. Amaç fonksiyonu ve kısıtların tanımlanması
+4. Popülasyonun rastgele oluşturulması
+5. Seçilim, çaprazlama ve mutasyon fonksiyonları
+6. Genetik Algoritma döngüsü
+7. En iyi bireyin çıktısı
+8. Fitness grafiği
+9. Sonuç yorumları
 
-Önerilen optimum RAM miktarı
+### **3. Sonuçları inceleyin**
 
-Maksimum performans skoru
+Algoritma çalıştığında şu çıktılar görünür:
 
-Fitness (uygunluk) grafiği
+* Optimum CPU çekirdek sayısı (x₁)
+* Optimum RAM miktarı (x₂)
+* Elde edilen maksimum performans skoru
+* Fitness evrim grafiği
 
-elde edilir.
+---
 
-📁 Proje Hakkında
+## 🛠️ **Kurulum Yönergeleri**
 
-Bu proje, web sunucusu donanım ayarlarının optimizasyonunu Genetik Algoritma ile gerçekleştirmektedir.
-Kısıt kontrollü GA, elitizm ve rank selection gibi yöntemler kullanılarak yüksek performanslı ayar kombinasyonu bulunur.
+Bu proje **Google Colab** üzerinde çalışmak üzere tasarlanmıştır ve ek kurulum gerektirmez.
+
+Yerel çalıştırmak isteyenler için gerekli kütüphaneler:
+
+```bash
+pip install numpy
+pip install matplotlib
+```
+
+---
+
+Hazır! Bundan sonra direkt olarak **README.md içine yapıştırabilirsin**.
+İstersen ek olarak:
+
+* görsel/grafik ekleme alanı
+* kod blokları
+* sonuç değerlendirmesi
+* proje sahibi bölümü
+
+de ekleyebilirim.
